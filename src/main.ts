@@ -1,6 +1,6 @@
 import { findReferences } from "./commands/findReferences";
-import handleStop from "./handlers/handleStop";
 import handleAddTextEditor from "./handlers/handleAddTextEditor";
+import handleStop from "./handlers/handleStop";
 import { makeServerExecutable } from "./novaUtils";
 
 interface Config {
@@ -23,18 +23,20 @@ export const activate = function () {
     config.formatOnSave = isOn;
   });
 
-  nova.config.observe("elixir-ls.language-server-path", function (
-    path: string
-  ) {
-    config.serverPath = path;
-    startServer(config);
-  });
+  nova.config.observe(
+    "elixir-ls.language-server-path",
+    function (path: string) {
+      config.serverPath = path;
+      startServer(config);
+    }
+  );
 
-  nova.config.observe("elixir-ls.enable-language-server", function (
-    enable: boolean
-  ) {
-    config.enableLanguageServer = enable;
-  });
+  nova.config.observe(
+    "elixir-ls.enable-language-server",
+    function (enable: boolean) {
+      config.enableLanguageServer = enable;
+    }
+  );
 };
 
 export const deactivate = function () {
