@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+set -eo pipefail
+
+pushd elixir-ls 1> /dev/null
+mix deps.get
+mix compile
+mix elixir_ls.release -o ../ElixirLS.novaextension/elixir-ls-release
+popd 1> /dev/null
