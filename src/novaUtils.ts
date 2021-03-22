@@ -57,25 +57,14 @@ export function jumpToRange(
 }
 
 export const makeServerExecutable = () => {
-  const serverProcess = new Process("/usr/bin/env", {
-    args: [
-      "chmod",
-      "u+x",
-      nova.path.join(
-        nova.extension.path,
-        "elixir-ls-release/language_server.sh"
-      ),
-    ],
-    cwd: nova.extension.path,
+  [
+    "elixir-ls-release/language_server.sh",
+    "elixir-ls-release/launch.sh",
+  ].forEach(function (path) {
+    const process = new Process("/usr/bin/env", {
+      args: ["chmod", "u+x", nova.path.join(nova.extension.path, path)],
+      cwd: nova.extension.path,
+    });
+    process.start();
   });
-  const launchProcess = new Process("/usr/bin/env", {
-    args: [
-      "chmod",
-      "u+x",
-      nova.path.join(nova.extension.path, "elixir-ls-release/launch.sh"),
-    ],
-    cwd: nova.extension.path,
-  });
-  serverProcess.start();
-  launchProcess.start();
 };
