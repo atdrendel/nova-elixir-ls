@@ -12,7 +12,7 @@ interface Config {
 let langClient = null;
 const mainDisposable = new CompositeDisposable();
 let config = {
-  formatOnSave: false,
+  formatOnSave: true,
   enableLanguageServer: true,
   serverPath: "",
 };
