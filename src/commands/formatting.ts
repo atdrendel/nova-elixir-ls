@@ -1,5 +1,5 @@
-import { lspRangeToRange } from "../novaUtils";
 import type * as lspTypes from "vscode-languageserver-protocol";
+import { lspRangeToRange } from "../novaUtils";
 
 interface LSPFormattingResult {
   newText: string;
