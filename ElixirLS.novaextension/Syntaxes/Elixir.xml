@@ -17,10 +17,10 @@
     
     <indentation>
         <increase>
-            <expression>else|->|\{</expression>
+            <expression>(after|else|catch|rescue|fn|^.*(do|\x{003C}\-|\->|\{|\[|\=))\s*$</expression>
         </increase>
         <decrease>
-            <expression>end|else|\}\s</expression>
+            <expression>\s*((\}|\])\s*|(after|else|catch|rescue|end)\b)</expression>
         </decrease>
     </indentation>
     
