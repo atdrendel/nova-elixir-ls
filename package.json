@@ -17,5 +17,8 @@
   },
   "scripts": {
     "build": "yarn run rollup -c"
+  },
+  "dependencies": {
+    "@types/nova-editor": "^1.0.0"
   }
 }
